@@ -6,7 +6,8 @@ import conf from "../../conf/conf";
 import { useDispatch } from "react-redux";
 import { addItem } from "../Cart/CartSlice";
 import SkeletonLoading from "../../features/SkeletonLoading/SkeletonLoading";
-
+import { WhatsAppWidget } from 'react-whatsapp-widget';
+import 'react-whatsapp-widget/dist/index.css';
 function View() {
   const { id } = useParams(); // Get the 'id' parameter from the URL
   const [num, setNum] = useState(1);
@@ -56,6 +57,54 @@ function View() {
     navigate("/cartitem");
   };
 
+
+
+
+
+  const [reader, setReader] = useState(null);
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    const newReader = new FileReader();
+
+    if (file) {
+      newReader.readAsDataURL(file);
+    }
+
+    setReader(newReader);
+  };
+
+
+
+  const handleUploadandcart = (item) => {
+    const itemWithQuantity = { ...item, quantity: num };
+    dispatch(addItem(itemWithQuantity));
+
+    if (reader && reader.readyState === FileReader.DONE) {
+      localStorage.setItem('productImage', reader.result);
+      navigate("/cartitem");
+    } else if (reader) {
+      reader.onload = () => {
+        localStorage.setItem('productImage', reader.result);
+        navigate("/cartitem");
+      };
+    }
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -89,7 +138,7 @@ function View() {
                                   alt="Nike Air Max 21A"
                                   className="h-50 w-50 rounded object-cover lg:h-full lg:w-1/2"
                                   src={storage.getFilePreview(
-                                    conf.appwriteBucketId,
+                                    conf.appwriteBucketId_1,
                                     img.$id
                                   )}
                                 />
@@ -189,9 +238,7 @@ function View() {
                               </span>
                             </div>
                             <div className="ml-auto flex items-center">
-                              <span className="mr-3 text-sm font-semibold">
-                                Size
-                              </span>
+                              
                               <div className="box-border h-10 w-32 p-4 border-2 rounded-md  flex items-center">
                                 <button
                                   onClick={decrementNum}
@@ -251,7 +298,7 @@ function View() {
                                   alt="Nike Air Max 21A"
                                   className="h-50 w-50 rounded object-cover lg:h-full lg:w-1/2"
                                   src={storage.getFilePreview(
-                                    conf.appwriteBucketId,
+                                    conf.appwriteBucketId_1,
                                     img.$id
                                   )}
                                 />
@@ -351,9 +398,7 @@ function View() {
                               </span>
                             </div>
                             <div className="ml-auto flex items-center">
-                              <span className="mr-3 text-sm font-semibold">
-                                Size
-                              </span>
+                            
                               <div className="box-border h-10 w-32 p-4 border-2 rounded-md  flex items-center">
                                 <button
                                   onClick={decrementNum}
@@ -413,7 +458,7 @@ function View() {
                                   alt="Nike Air Max 21A"
                                   className="h-50 w-50 rounded object-cover lg:h-full lg:w-1/2"
                                   src={storage.getFilePreview(
-                                    conf.appwriteBucketId,
+                                    conf.appwriteBucketId_1,
                                     img.$id
                                   )}
                                 />
@@ -511,11 +556,11 @@ function View() {
                               <span className="mr-3 text-sm font-semibold">
                                 {p.subcategory}
                               </span>
+                              
                             </div>
+                           
                             <div className="ml-auto flex items-center">
-                              <span className="mr-3 text-sm font-semibold">
-                                Size
-                              </span>
+                           
                               <div className="box-border h-10 w-32 p-4 border-2 rounded-md  flex items-center">
                                 <button
                                   onClick={decrementNum}
@@ -535,15 +580,29 @@ function View() {
                                 >
                                   +
                                 </button>
+
                               </div>
                             </div>
+                           
+
                           </div>
+                          <div className="flex items-center justify-between">
+                        
+                             <p className="leading-relaxed text-sm">Upload your Picture</p>
+                            
+                              <input type="file" id="myFile" name="filename"/>
+                             </div>
+                         
+                         
+                         
                           <div className="flex items-center justify-between">
                             <span className="title-font text-xl font-bold text-gray-900">
                               {p.price}
                             </span>
+
+                            
                             <button
-                              onClick={() => handleAddToCart(p)}
+                              onClick={() => handleUploadandcart(p)}
                               type="button"
                               className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                             >
@@ -560,6 +619,9 @@ function View() {
             })}
         </>
       )}
+      <div className="fixed bottom-4 right-4 z-50">
+                <WhatsAppWidget phoneNumber="+917980236947" />
+        </div>
     </>
   );
 }

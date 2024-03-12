@@ -102,7 +102,7 @@ function GiftCat() {
                                                 key={i}
                                                 className="aspect-w-16 aspect-h-9">
                                                 <img
-                                                    src={storage.getFilePreview(conf.appwriteBucketId, img.$id)}
+                                                    src={storage.getFilePreview(conf.appwriteBucketId_1, img.$id)}
                                                     alt="Product"
                                                     className="object-cover w-full h-full rounded-t-md"
                                                 />
@@ -140,7 +140,7 @@ function GiftCat() {
                     ))}
             </div>
             <div className="fixed bottom-4 right-4 z-50">
-                <WhatsAppWidget phoneNumber="+919007209647" />
+                <WhatsAppWidget phoneNumber="+917980236947" />
         </div>
         </>
     );

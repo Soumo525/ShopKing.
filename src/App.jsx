@@ -23,6 +23,7 @@ import Pay from "./pages/Pay/Pay";
 import Control from "./features/Admin/Control";
 import Verified from "./features/Admin/Verified";
 import AdminProduct from "./features/Admin/AdminProduct";
+import SuccessPage from "./pages/Pay/Success";
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
                 <Route path="/cartitem/shipping" element={<Shipping />} />
                 <Route path="/cartitem/test" element = {<Test />} />
                 <Route path="/cartitem/test/pay" element = { <Pay />} />
+                <Route path="/success" element = { <SuccessPage />} />
               </Route>
             </Routes>
           </AuthProvider>

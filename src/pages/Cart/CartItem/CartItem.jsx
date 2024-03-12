@@ -17,15 +17,18 @@ function CartItem() {
 
 
   
-  const {getCoupon,coupon} = useAuth()
+  const {getCoupon,couponold} = useAuth()
 
   useEffect(() => {
     getCoupon()
   },[])
   
+  
   const applyCoupon = () => {
-    if (coupon.length > 0) {
-      const value = coupon[0].couponCodeAll;
+    console.log("click");
+    //console.log(couponold);
+    if (couponold.length > 0) {
+      const value = couponold[0].couponCodeAll;
       if (couponCode === value) {
         setDiscount(0.1); // Apply 10% discount
       }
@@ -76,7 +79,7 @@ useEffect(() => {
                 return (
                   <div key={img.$id} className="flex items-center">
                     <img
-                      src={storage.getFilePreview(conf.appwriteBucketId, img.$id)}
+                      src={storage.getFilePreview(conf.appwriteBucketId_1, img.$id)}
                       alt="Product Image"
                       className="mr-4"
                       style={{ maxWidth: '50px', maxHeight: '50px' }} // Adjust the values as needed

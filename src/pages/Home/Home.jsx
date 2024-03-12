@@ -32,7 +32,7 @@ function Home() {
         <br/>
         <GiftC/>
         <div className="fixed bottom-4 right-4 z-50">
-                <WhatsAppWidget phoneNumber="+919007209647" />
+                <WhatsAppWidget phoneNumber="+917980236947" />
         </div>
 
     </>

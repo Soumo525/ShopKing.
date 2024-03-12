@@ -29,7 +29,7 @@ function GiftC() {
                                     key={i}
                                     className="aspect-w-16 aspect-h-9">
                                     <img
-                                        src={storage.getFilePreview(conf.appwriteBucketId, img.$id)}
+                                        src={storage.getFilePreview(conf.appwriteBucketId_1, img.$id)}
                                         alt="Product"
                                         className="object-cover w-full h-full rounded-t-md"
                                     />

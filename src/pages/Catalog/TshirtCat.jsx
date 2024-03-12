@@ -97,7 +97,7 @@ const filterItems = () => {
                       >
                         <img
                           src={storage.getFilePreview(
-                            conf.appwriteBucketId,
+                            conf.appwriteBucketId_1,
                             img.$id
                           )}
                           alt="Product"
@@ -148,7 +148,7 @@ const filterItems = () => {
 
 
       <div className="fixed bottom-4 right-4 z-50">
-        <WhatsAppWidget phoneNumber="+919007209647" />
+        <WhatsAppWidget phoneNumber="+917980236947" />
       </div>
     </>
   );

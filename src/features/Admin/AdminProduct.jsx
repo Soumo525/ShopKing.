@@ -90,7 +90,7 @@ function AdminProduct() {
                                                   image && image.map((i,m) => {
                                                     if(i.$id === item.imagekey)  
                                                     {
-                                                      const imgData = storage.getFilePreview(conf.appwriteBucketId, i.$id)
+                                                      const imgData = storage.getFilePreview(conf.appwriteBucketId_1, i.$id)
                                                       let url = imgData.href
                                                       return (
                                                         <a key={m}

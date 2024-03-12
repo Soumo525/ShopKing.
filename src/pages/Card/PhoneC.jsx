@@ -36,7 +36,7 @@ function PhoneC() {
                       >
                         <img
                           src={storage.getFilePreview(
-                            conf.appwriteBucketId,
+                            conf.appwriteBucketId_1,
                             img.$id
                           )}
                           alt="Product"

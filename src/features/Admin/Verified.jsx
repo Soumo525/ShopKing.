@@ -105,7 +105,7 @@ function Verified() {
                           image.map((i) => {
                             if (i.$id === item.ssKey) {
                               const imgData = storage.getFilePreview(
-                                conf.appwriteBucketId,
+                                conf.appwriteBucketId_1,
                                 i.$id
                               );
                               let url = imgData.href;

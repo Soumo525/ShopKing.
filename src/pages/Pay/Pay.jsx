@@ -118,6 +118,14 @@ const  handleSubmit= async(e) => {
   }, [dispatch]);
 
 
+  const handleSuccess = () => {
+    navigate('/success')
+  }
+
+
+
+
+
   return (
     <form   onSubmit={handleSubmit} ref={image}
     className="w-full max-w-xs">
@@ -159,7 +167,9 @@ const  handleSubmit= async(e) => {
       </label>
       <input className="py-2 mx-4" type="file" id="myFile" name="filename" />
       <div className="flex justify-center items-center py-2">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <button 
+          onClick={handleSuccess}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           Button
         </button>
       </div>

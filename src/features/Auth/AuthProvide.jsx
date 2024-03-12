@@ -71,7 +71,7 @@ export const AuthProvider = ( {children} ) => {
         setLoading(true);
         try {
             const response = await storage.createFile(
-                conf.appwriteBucketId,
+                conf.appwriteBucketId_1,
                 ID.unique(),
                 file
             );
@@ -102,7 +102,7 @@ export const AuthProvider = ( {children} ) => {
     const imageList = async() => {
    try {
     const img = await storage.listFiles(
-        conf.appwriteBucketId
+        conf.appwriteBucketId_1
     )
     setImage(img.files)
     //console.log(img.files);

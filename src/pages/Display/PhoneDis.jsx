@@ -43,7 +43,7 @@ export default function PhoneDis() {
                           <div key={i} className="aspect-w-16 aspect-h-9">
                             <img
                               src={storage.getFilePreview(
-                                conf.appwriteBucketId,
+                                conf.appwriteBucketId_1,
                                 img.$id
                               )}
                               alt="Product"
