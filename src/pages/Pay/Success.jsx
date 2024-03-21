@@ -1,11 +1,23 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import pdfMake from 'pdfmake/build/pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
+
 import { useNavigate } from "react-router-dom";
 import {resetShipping} from '../Shipping/Shipping'
 import { resetTotal,resetItem } from "../Cart/CartSlice";
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import pdfMake from 'pdfmake/build/pdfmake';
+// import pdfFonts from 'pdfmake/build/vfs_fonts';
+// pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+pdfMake.fonts = {
+  Roboto: {
+    normal: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Regular.ttf',
+    bold: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Medium.ttf',
+    italics: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Italic.ttf',
+    bolditalics: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-MediumItalic.ttf',
+  },
+};
+
+
 
 const SuccessPage = () => {
   const navigate = useNavigate();
@@ -28,7 +40,7 @@ const SuccessPage = () => {
         { text: 'ShopKing@gmail.com', style: 'email' },
         { text: '+91 7980236947', style: 'email' },
         { text: 'Receipt', style: 'header' },
-        { text: `OrderID : ${shipping.map((i) => i.id)}`, style: 'orderId' },
+        { text: `OrderID : ${shipping.length > 0 ? shipping[0].id : ''}`, style: 'orderId' },
         { text: 'Items:', style: 'subheader' },
         {
           table: {
