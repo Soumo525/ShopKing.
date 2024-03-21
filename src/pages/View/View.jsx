@@ -225,7 +225,7 @@ function View() {
                           </div>
                           <div className="flex items-center justify-between">
                             <span className="title-font text-xl font-bold text-gray-900">
-                              {p.price}
+                            Rs:- {p.price}
                             </span>
                             <button
                               onClick={() => handleAddToCart(p)}
@@ -384,7 +384,7 @@ function View() {
                           </div>
                           <div className="flex items-center justify-between">
                             <span className="title-font text-xl font-bold text-gray-900">
-                              {p.price}
+                            Rs:- {p.price}
                             </span>
                             <button
                               onClick={() => handleAddToCart(p)}
@@ -569,7 +569,7 @@ function View() {
 
                             <div className="flex items-center justify-between">
                               <span className="title-font text-xl font-bold text-gray-900">
-                                {p.price}
+                              Rs:- {p.price}
                               </span>
 
                               <button

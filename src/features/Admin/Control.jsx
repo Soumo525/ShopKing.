@@ -94,7 +94,7 @@ function Control() {
                   <th className="py-2 px-4">Title</th>
                   <th className="py-2 px-4">Quantity</th>
                   <th className="py-2 px-4">Total</th>
-                  <th className="py-2 px-4">Document_ID</th>
+                  <th className="py-2 px-4">Product Id</th>
                 </tr>
               </thead>
               <tbody>

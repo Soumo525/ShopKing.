@@ -65,7 +65,7 @@ function AdminProduct() {
                         <table className="min-w-full divide-y divide-gray-200">
                             <thead className="bg-gradient-to-tr from-indigo-600 to-purple-600 text-white">
                                 <tr>
-                                    <th className="py-2 px-4">Document_ID</th>
+                                    <th className="py-2 px-4">Product Id</th>
                                     <th className="py-2 px-4">Title</th>
                                     <th className="py-2 px-4">Category</th>
                                     <th className="py-2 px-4">Subcategory</th>
@@ -77,10 +77,12 @@ function AdminProduct() {
                             <tbody>
                                 {data  &&
                                   data
-                                      .filter((i) => (search === "" ? i : i.$id.includes(search)))
+                                      .filter((i) => {
+                                        return search === "" ? i : i.productId.toString().includes(search);
+                                        })
                                         .map((item, i) => (
                                             <tr key={i} className="text-sm font-normal">
-                                                <td className="py-2 px-4">{item.$id}</td>
+                                                <td className="py-2 px-4">{item.productId}</td>
                                                 <td className="py-2 px-4">{item.title}</td>
                                                 <td className="py-2 px-4">{item.category}</td>
                                                 <td className="py-2 px-4">{item.subcategory}</td>

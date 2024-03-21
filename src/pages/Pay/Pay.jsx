@@ -57,19 +57,19 @@ const navigate = useNavigate();
   });
   
   let quantities = cartItems.map((item) => parseInt(item.quantity)).join(',');
-  let Document_ID = cartItems.map((item) => (item.$id));
+  let Document_ID = cartItems.map((item) => (item.productId).toString());
 
 
 
   //console.log("Titles:", titles);
   //console.log("quantities:", quantities);
-  //console.log("Document_ID:", Document_ID);
+  console.log("IDF:", Document_ID);
   //console.log("T:", last4);
   
 
+const finalPrice = +totals
 
-
-
+console.log(typeof +finalPrice);
 
 const  handleSubmit= async(e) => {
   console.log("click");
@@ -94,7 +94,7 @@ const  handleSubmit= async(e) => {
       quantity:quantities,
       Document_ID:Document_ID,
       status:statuss,
-      total:totals,
+      total:finalPrice,
       transaction:last4,
       date:date,
       ssKey:fileId
