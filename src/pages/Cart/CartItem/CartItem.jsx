@@ -53,15 +53,13 @@ useEffect(() => {
   useEffect(() => {
     const subtotal = cartItems.reduce((acc, item) => acc + (item.quantity * item.price), 0);
     const gst = subtotal * 0.18;
-    const total = Math.round(subtotal + gst);
-
-    dispatch(setTotal(total));
-  }, [cartItems, dispatch]);
-
+  }, [cartItems]);
+  const final = Math.round(cartItems.reduce((acc, item) => acc + (item.quantity * item.price), 0) * (1 - discount) + (cartItems.reduce((acc, item) => acc + (item.quantity * item.price), 0) * 0.18)).toFixed(2)
+  dispatch(setTotal(final));
   
   // shipping
   const handleShipping = () =>{
-    navigateTo('/cartitem/test')
+    navigateTo('/cartitem/Shipping')
   } 
 
   useEffect (() => {
@@ -77,6 +75,7 @@ useEffect(() => {
             {image && image.map((img) => {
               if (item.imagekey === img.$id) {
                 return (
+                 <>
                   <div key={img.$id} className="flex items-center">
                     <img
                       src={storage.getFilePreview(conf.appwriteBucketId_1, img.$id)}
@@ -85,6 +84,15 @@ useEffect(() => {
                       style={{ maxWidth: '50px', maxHeight: '50px' }} // Adjust the values as needed
                     />
                   </div>
+                  {/* <div key={i} className="flex items-center">
+                    <img
+                      src={item.imageData}
+                      alt="your Image"
+                      className="mr-4"
+                      style={{ maxWidth: '50px', maxHeight: '50px' }} // Adjust the values as needed
+                    />
+                  </div> */}
+                  </>
                 )
               }
               return null;
@@ -134,7 +142,8 @@ useEffect(() => {
             <span className="font-bold">Total (After Discount):</span>
             <span className="font-bold">
               Rs: {Math.round(cartItems.reduce((acc, item) => acc + (item.quantity * item.price), 0) * (1 - discount) + (cartItems.reduce((acc, item) => acc + (item.quantity * item.price), 0) * 0.18)).toFixed(2)}
-            </span> {/* Calculate total including GST */}
+            </span>
+            {/* Total (After Discount): */}
           </div>
         <div className="flex justify-center mt-6">
           <input

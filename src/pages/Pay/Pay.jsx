@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import QR from "./QR.png";
+import QR from "./3.png";
 import { useDispatch, useSelector } from 'react-redux';
 import {resetShipping} from '../Shipping/Shipping'
 import { useEffect } from "react";
@@ -72,6 +72,7 @@ const navigate = useNavigate();
 
 
 const  handleSubmit= async(e) => {
+  console.log("click");
   e.preventDefault();
   setDate(localDateString)
   const fileInput = image.current.querySelector('input[type="file"]');
@@ -99,6 +100,7 @@ const  handleSubmit= async(e) => {
       ssKey:fileId
     });
     setLast4('')
+    navigate('/success')
 }catch (error) {
     console.error(error);
   }
@@ -118,9 +120,9 @@ const  handleSubmit= async(e) => {
   }, [dispatch]);
 
 
-  const handleSuccess = () => {
-    navigate('/success')
-  }
+  // const handleSuccess = () => {
+  //   navigate('/success')
+  // }
 
 
 
@@ -130,16 +132,27 @@ const  handleSubmit= async(e) => {
     <form   onSubmit={handleSubmit} ref={image}
     className="w-full max-w-xs">
       <div className="flex justify-center items-center">
-        <div className="w-1/2">
+        <div className="w-1/2 mt-5">
           <img src={QR} alt="Mobile" />
           <label
             className="block text-gray-700 text-sm font-bold mx-4"
             htmlFor="name"
           >
-            UPI QR CODE OR PAY VIA MOBILE NO:- 900##09#47
+            UPI QR CODE OR PAY VIA MOBILE NO:- 7980236947
           </label>
         </div>
-        <div className="w-1/2">
+        <div className="w-1/2 mx-2">
+          <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="name"
+          >
+            Your Total Amount is: <span style={{ color: 'green' }}>Rs.{totals}/-</span>
+          </label>
+
+           
+
+          </div>
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
@@ -168,9 +181,9 @@ const  handleSubmit= async(e) => {
       <input className="py-2 mx-4" type="file" id="myFile" name="filename" />
       <div className="flex justify-center items-center py-2">
         <button 
-          onClick={handleSuccess}
+          // onClick={handleSuccess}
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          Button
+          Submit
         </button>
       </div>
     </form>

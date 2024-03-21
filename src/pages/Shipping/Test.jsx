@@ -32,7 +32,7 @@ function Test() {
         // console.log("ID", id);
 
         resetForm();
-        navigate("/cartitem/test/pay");
+        navigate("/cartitem/Shipping/pay");
     };
 
     const resetForm = () => {

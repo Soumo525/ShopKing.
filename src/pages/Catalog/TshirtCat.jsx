@@ -91,7 +91,6 @@ const filterItems = () => {
                   if (img.$id === post.imagekey) {
                     return (
                       <div
-                        onClick={() => handleView(post)}
                         key={i}
                         className="aspect-w-16 aspect-h-9"
                       >

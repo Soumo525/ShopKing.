@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import { useAuth } from "../Auth/AuthProvide";
 const CountDown = () => {
   const navigate = useNavigate();
   const initialTime = 5 * 60 * 60; // 5 hours in seconds
@@ -7,7 +8,14 @@ const CountDown = () => {
     const storedTime = localStorage.getItem("countdownTime");
     return storedTime ? parseInt(storedTime, 10) : initialTime;
   });
-
+ const {getCoupon,couponold} = useAuth()
+ useEffect(() => {
+  getCoupon()
+},[])
+  let value
+  if (couponold.length > 0) {
+     value = couponold[0].couponCodeAll;
+  }
   useEffect(() => {
     const interval = setInterval(() => {
       setTime((prevTime) => {
@@ -44,7 +52,7 @@ const CountDown = () => {
       </div>
       <div>
         <p className="text-center text-sm">
-          Apply this coupon <span style={{ color: "red" }}>HOLI10</span> get 10%
+          Apply this coupon <span style={{ color: "red" }}>{value}</span> get 10%
           discount
         </p>
         <p className="text-center">Free shipping on all prepaid orders ✈️</p>

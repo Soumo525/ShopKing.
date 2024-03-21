@@ -91,14 +91,14 @@ function GiftCat() {
 
             <div className="mx-auto grid gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
                 {filteredItems &&
-                    filteredItems.slice(0,4).map((post, index) => (
+                    filteredItems.map((post, index) => (
                         <Link to={`/view/${post.$id}`} key={index} className="rounded-md border flex flex-col w-full">
                             {image &&
                                 image.map((img, i) => {
                                     if (img.$id === post.imagekey) {
                                         return (
                                             <div
-                                                onClick={() => handleView(post)}
+                                               
                                                 key={i}
                                                 className="aspect-w-16 aspect-h-9">
                                                 <img

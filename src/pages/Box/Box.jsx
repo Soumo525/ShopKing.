@@ -23,14 +23,17 @@ function Box() {
         <div onClick={handlePhone}
         className="relative h-20 w-20 p-4 flex border-0 flex-col justify-center items-center hover:bg-gray-700">
           <IoShirtOutline size={30}  />
+          <p>T-Shirt</p>
         </div>
         <div onClick={handleTshirt}
         className="relative h-20 w-20 p-4 flex border-0 flex-col justify-center items-center hover:bg-gray-700">
         <CiMobile3 size={30} />
+        <p>Mobile</p>
         </div>
         <div onClick={handleGift}
         className="relative h-20 w-20 p-4 flex border-0 flex-col justify-center items-center hover:bg-gray-700">
           <TfiGift  size={30}  />
+          <p>Gift </p>
         </div>
       </div>
     </div>

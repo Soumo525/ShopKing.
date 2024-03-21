@@ -17,7 +17,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import Contact from "./pages/About/Contact";
 import ServicePage from "./pages/Service/Service";
 import Coupon from "./features/Coupon/Coupon";
-import Shipping from "./pages/Shipping/Shipping";
+
 import Test from "./pages/Shipping/Test";
 import Pay from "./pages/Pay/Pay";
 import Control from "./features/Admin/Control";
@@ -40,9 +40,12 @@ function App() {
                 <Route element={<Private />}>
                   <Route path="/admin/control" element={<AdminCon />} />
                   <Route path="/admin/control/coupon" element={<Coupon />} />
-                  <Route path="/admin/control/shipping" element ={<Control />} />
-                  <Route path="/admin/Verified" element = {<Verified />} />
-                  <Route path="/admin/productcontrol" element = {<AdminProduct />} />
+                  <Route path="/admin/control/shipping" element={<Control />} />
+                  <Route path="/admin/Verified" element={<Verified />} />
+                  <Route
+                    path="/admin/productcontrol"
+                    element={<AdminProduct />}
+                  />
                 </Route>
 
                 <Route path="/phone" element={<PhoneCat />} />
@@ -55,10 +58,10 @@ function App() {
                 <Route path="/service" element={<ServicePage />} />
 
                 <Route path="/cartitem" element={<CartItem />} />
-                <Route path="/cartitem/shipping" element={<Shipping />} />
-                <Route path="/cartitem/test" element = {<Test />} />
-                <Route path="/cartitem/test/pay" element = { <Pay />} />
-                <Route path="/success" element = { <SuccessPage />} />
+
+                <Route path="/cartitem/Shipping" element={<Test />} />
+                <Route path="/cartitem/Shipping/pay" element={<Pay />} />
+                <Route path="/success" element={<SuccessPage />} />
               </Route>
             </Routes>
           </AuthProvider>

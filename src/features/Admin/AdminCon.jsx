@@ -9,6 +9,11 @@ function AdminCon() {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('');
   const [price, setPrice] = useState(0);
+  const [id, setId] = useState("");
+  const [imgQty, setImgQty] = useState(0);
+  useEffect(() => {
+    setId(Math.floor((Math.random() * 90000) + 10000));
+}, []);
   const img = useRef(null)
   const handleSubmit = async(e) => {
      e.preventDefault();
@@ -21,7 +26,7 @@ function AdminCon() {
       try{
         const fileId = await uploadImage(file);
         console.log("File ID: ", fileId);
-        await addToDatabse({ title,content,category,subcategory:subCategory, price, imagekey: fileId});
+        await addToDatabse({ title,content,category,subcategory:subCategory, price, imagekey: fileId, productId: id, imgQty: imgQty});
       }
      catch(error) {
       console.error(error);
@@ -164,6 +169,16 @@ function AdminCon() {
             />
             <label className="after:content[''] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
               Product Price
+            </label>
+          </div>
+          <div className="relative h-11 w-full min-w-[200px]">
+            <input
+              onChange={(e) => setImgQty(e.target.value)}
+              placeholder="Product Price 500"
+              className="peer h-full w-full border-b border-blue-gray-200 bg-transparent pt-4 pb-1.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-gray-500 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50 placeholder:opacity-0 focus:placeholder:opacity-100"
+            />
+            <label className="after:content[''] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+              Product Image Quantities
             </label>
           </div>
           <input type="file" id="myFile" name="filename"/>

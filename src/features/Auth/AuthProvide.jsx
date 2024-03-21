@@ -49,11 +49,11 @@ export const AuthProvider = ( {children} ) => {
         }
       };
 
-      const addToDatabse = async({title,content,category,subcategory,price,imagekey}) => {
+      const addToDatabse = async({title,content,category,subcategory,price,imagekey,productId,imgQty}) => {
         try {
             const userId = user.$id;
             const data = {
-                title,content,category,subcategory,price,userId,imagekey
+                title,content,category,subcategory,price,userId,imagekey,productId,imgQty
             }
             const  newData = await database.createDocument(
                 conf.appwriteDatabaseId,
@@ -277,7 +277,56 @@ export const AuthProvider = ( {children} ) => {
             console.error(error);
         }
     }
- 
+///////////////////////////
+
+    const uploaduserImage = async(file) => {
+        try {
+            const response = await storage.createFile(
+                conf.appwriteBucketId_2,
+                ID.unique(),
+                file
+            );
+            setLoading(false)
+            return response.$id;
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    
+    const uploaduserImageData = async({productID,orderId,firstImageKey,secondImageKey}) =>{
+        try {
+            const data = {
+                productID,orderId,firstImageKey,secondImageKey
+            }
+            const  newData = await database.createDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId_4,
+                ID.unique(),
+                data
+            )
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    const [userImage, setUserImage] = useState([])
+
+    const getuserImage = async() =>{
+        try {
+            const img = await storage.listFiles(
+                conf.appwriteBucketId_2
+            )
+            setUserImage(img.files)
+            console.log(img.files);
+           } catch (error) {
+            console.error(error);
+           }
+            
+
+    }
+
+
+
     const data = {
         user,
         adminLogin,
@@ -301,7 +350,12 @@ export const AuthProvider = ( {children} ) => {
         updatepay,
         getAllData,
         allData,
-        deleteOneItem
+        deleteOneItem,
+        uploaduserImage,
+        uploaduserImageData,
+        getuserImage,
+        userImage,
+       
     };
     return (
         <AuthContext.Provider value={data}>
